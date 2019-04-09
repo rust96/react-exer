@@ -1,8 +1,13 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 const News = () => {
+
   return (
-    <h1>News</h1>
+    <div>
+      <Redirect to="/profile" />
+      <h1>News</h1>
+    </div>
   )
 }
 
