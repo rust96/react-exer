@@ -1,9 +1,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import MainPage from '../main-page';
 import News from '../news';
+import Profile from '../profile';
+import Login from '../login';
 
-const App = () => {
+
+
+const App = ({ isLoggedIn }) => {
   return (
     <Switch>
       <Route
@@ -15,10 +20,28 @@ const App = () => {
       <Route
        path="/news"
        component={News}
-       exact
+      />
+
+      <Route
+       path="/profile"
+       render={() => (
+         <Profile
+          isLoggedIn={isLoggedIn} />
+       )}
+      />
+
+      <Route
+       path="/login"
+       component={Login}
       />
     </Switch>
   );
 }
 
-export default App;
+const mapStateToProps = ({ isLoggedIn }) => {
+  return {
+    isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps)(App);
