@@ -8,7 +8,8 @@ import Login from '../login';
 
 
 
-const App = ({ isLoggedIn }) => {
+const App = (props) => {
+  console.log(props)
   return (
     <Switch>
       <Route
@@ -26,7 +27,7 @@ const App = ({ isLoggedIn }) => {
        path="/profile"
        render={() => (
          <Profile
-          isLoggedIn={isLoggedIn} />
+          isLoggin={props.isLoggin} />
        )}
       />
 
@@ -38,9 +39,9 @@ const App = ({ isLoggedIn }) => {
   );
 }
 
-const mapStateToProps = ({ isLoggedIn }) => {
+const mapStateToProps = (props) => {
   return {
-    isLoggedIn
+    isLoggin: props.isLoggin
   }
 }
 

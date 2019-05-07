@@ -1,6 +1,6 @@
 const initialState = {
-  title: 'Privet ya store',
-  isLoggedIn: false
+  loading: false,
+  isLogin: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -8,22 +8,11 @@ const reducer = (state = initialState, action) => {
 
   switch (action.type) {
 
-    case 'SAY_HELLO':
+    case 'FETCH_DATA':
       return {
         ...state,
-        hello: 'zdarova'
-      }
-
-    case 'SUBMIT_DATA':
-      const { login, password } = action.payload;
-
-      if (login === 'rust' && password === '123') {
-        return {
-          ...state,
-          isLoggedIn: true,
-          login,
-          password
-        }
+        loading: true,
+        isLogin: true
       }
 
       return state;

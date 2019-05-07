@@ -3,10 +3,10 @@ import Header from '../header';
 import { Redirect } from 'react-router-dom';
 
 
-const Profile = ({ isLoggedIn }) => {
-  console.log(isLoggedIn)
+const Profile = ({ isLoggin }) => {
+  console.log(isLoggin)
 
-  if (!isLoggedIn) {
+  if (!isLoggin) {
     return (
       <Redirect to="login" />
     );

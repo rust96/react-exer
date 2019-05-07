@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { submitData } from '../../actions';
+import { fetchData, requestData } from '../../actions';
 import Header from '../header';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
 
   state = {
     password: "",
-    login: ""
+    login: "",
+    isLogin: false
   }
 
   onLoginHandler = (e) => {
@@ -28,8 +30,19 @@ class Login extends Component {
     onSubmitData({ login, password })
   }
 
+  componentDidMount () {
+    this.setState({ isLogin: this.props.state.isLogin })
+  }
+
   render () {
+    const { isLogin } = this.state;
     console.log(this.props)
+    console.log(isLogin)
+
+    if (isLogin) {
+      return <Redirect to="/profile" />
+    }
+
     return (
       <div>
         <Header />
@@ -51,7 +64,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSubmitData: (data) => {
-      dispatch(submitData(data));
+      dispatch(requestData(data));
     }
   }
 }
