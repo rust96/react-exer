@@ -27,21 +27,27 @@ const App = (props) => {
        path="/profile"
        render={() => (
          <Profile
-          isLoggin={props.isLoggin} />
+          isLogin={props.isLogin}
+          loading={props.loading} />
        )}
       />
 
       <Route
        path="/login"
-       component={Login}
+       render={() => (
+         <Login
+          isLogin={props.isLogin}
+          loading={props.loading} />
+       )}
       />
     </Switch>
   );
 }
 
-const mapStateToProps = (props) => {
+const mapStateToProps = (state) => {
   return {
-    isLoggin: props.isLoggin
+    isLogin: state.isLogin,
+    loading: state.loading
   }
 }
 

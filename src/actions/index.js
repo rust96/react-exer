@@ -33,7 +33,9 @@ const requestData = () => (dispatch) => {
   })
   .then((myResponse) => {
     console.log(myResponse);
-    dispatch(fetchDataSuccess())
+    setTimeout(() => {
+      dispatch(fetchDataSuccess())
+    }, 2000)
   })
   .catch(() => {
     dispatch(fetchDataError());

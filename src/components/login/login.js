@@ -9,7 +9,6 @@ class Login extends Component {
   state = {
     password: "",
     login: "",
-    isLogin: false
   }
 
   onLoginHandler = (e) => {
@@ -30,28 +29,33 @@ class Login extends Component {
     onSubmitData({ login, password })
   }
 
-  componentDidMount () {
-    this.setState({ isLogin: this.props.state.isLogin })
-  }
-
   render () {
-    const { isLogin } = this.state;
-    console.log(this.props)
-    console.log(isLogin)
+    const { isLogin, loading } = this.props;
 
-    if (isLogin) {
-      return <Redirect to="/profile" />
+    const loader = (!isLogin && loading) ? <h1>loading...</h1> : null;
+    const redirect = (isLogin && !loading) ? <Redirect to="/profile" /> : null;
+
+    const content = () => {
+      if (!loading && !isLogin) {
+        return (
+          <React.Fragment>
+            <input type="text" name="login" placeholder="login" onChange={this.onLoginHandler} />
+            <input type="text" name="password" placeholder="password" onChange={this.onPasswordHandler} />
+            <button onClick={this.onSubmit}>Отправить форму</button>
+          </React.Fragment>
+        )
+      }
     }
 
-    return (
-      <div>
-        <Header />
-        <input type="text" name="login" placeholder="login" onChange={this.onLoginHandler} />
-        <input type="text" name="password" placeholder="password" onChange={this.onPasswordHandler} />
-        <button onClick={this.onSubmit}>Отправить форму</button>
-        <h1>Login-Page</h1>
-      </div>
-    )
+      return (
+        <div>
+          <Header />
+            <h1>Login-Page</h1>
+            { content() }
+            { loader }
+            { redirect }
+        </div>
+      )
   }
 }
 
