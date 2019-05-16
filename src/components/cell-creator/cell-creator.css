@@ -2,7 +2,26 @@
   display: flex;
 }
 .cell {
-  margin-right: 10px;
+  width: 90%;
+
+  margin-left: auto;
+  margin-right: auto;
   padding: 10px;
-  border: 2px solid black;
+
+  border: .1px solid black;
+  background-color: #93ff93;
+  border-radius: 5px;
+}
+.block {
+  margin-right: 10px;
+
+  background-color: white;
+  border-radius: 5px;
+}
+.task-creator {
+  margin-bottom: 10px;
+}
+.input-creator {
+  border-radius: 2px;
+  border: .1px solid black;
 }

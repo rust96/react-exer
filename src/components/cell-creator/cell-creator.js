@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './cell-creator.css';
 import CellItem from '../cell-item';
+import TaskCreator from '../task-creator';
 
 class CellCreator extends Component {
   state = {
@@ -15,7 +16,12 @@ class CellCreator extends Component {
     const { cells } = this.props;
 
     const renderCells = cells.map((c, idx) => {
-      return <CellItem key={idx} cell={c} />
+      return (
+        <div className="block">
+          <TaskCreator />
+          <CellItem key={idx} cell={c} />
+        </div>
+      )
     });
 
     if (cells) {
