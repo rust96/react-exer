@@ -2,45 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Header from '../header';
+import BoardCreator from '../board-creator'
+import BoardsRow from '../boards-row';
+
+import './main-page.css';
 
 const MainPage = (props) => {
+  console.log(props)
   return (
     <div>
       <Header />
-      <h1>MainPage</h1>
-      <h4>{props.title}</h4>
-      <button onClick={props.sayHello}>say Hello</button>
-    </div>
+      <h1 className="main-page__title">Привет, ты на главной странице клона Трелло!</h1>
+      <BoardCreator />
+      <BoardsRow boards={props.boards}/>
+     </div>
   )
 };
 
-const mapStateToProps = ({ title }) => {
+const mapStateToProps = ({ title, boards }) => {
   return {
-    title
-  }
-}
-
-const sayHello = () => {
-  return {
-    type: 'SAY_HELLO',
-    payload: null
-  };
-};
-
-const booksLoaded = (newBooks) => {
-  return {
-    type: 'FETCH_BOOKS_SUCCESS',
-    payload: newBooks
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    sayHello: () => {
-      dispatch(sayHello());
-    }
+    title,
+    boards
   }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+
+export default connect(mapStateToProps)(MainPage);

@@ -1,15 +1,55 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PageNotFound from '../page-not-found';
 import Header from '../header';
+import CellCreator from '../cell-creator';
+import { addListTitle } from '../../actions';
 
-const News = () => {
+class News extends Component {
 
-  return (
-    <div>
-      <Header />
-      <h1>News</h1>
-    </div>
-  )
+  addListTitle = (title, boardId) => {
+    this.props.addListTitle(title, boardId)
+  }
+
+  render () {
+    console.log(this.props.boards)
+    const id = this.props.match.params.id;
+
+    const currentBoard = this.props.boards.find((b) => {
+      return b.id == id;
+    })
+
+    if (!currentBoard) {
+      return <PageNotFound />
+    }
+
+    return (
+      <div>
+        <Header />
+        <h1>News #{id}</h1>
+        <CellCreator
+          currentBoardId={id}
+          addListTitle={this.props.addListTitle}
+          cells={currentBoard.cells}
+        />
+      </div>
+    )
+  }
 }
 
-export default News;
+const mapStateToProps = ({ boards }) => {
+  return {
+    boards
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addListTitle: (title, boardId) => {
+      dispatch(addListTitle(title, boardId))
+    }
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(News);

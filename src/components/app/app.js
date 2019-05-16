@@ -5,8 +5,7 @@ import MainPage from '../main-page';
 import News from '../news';
 import Profile from '../profile';
 import Login from '../login';
-
-
+import PageNotFound from '../page-not-found';
 
 const App = (props) => {
   console.log(props)
@@ -19,7 +18,13 @@ const App = (props) => {
       />
 
       <Route
-       path="/news"
+       path="/news/"
+       component={News}
+       exact
+      />
+
+      <Route
+       path="/news/:id"
        component={News}
       />
 
@@ -36,10 +41,14 @@ const App = (props) => {
        path="/login"
        render={() => (
          <Login
-          isLogin={props.isLogin}
-          loading={props.loading} />
+          { ...props } />
        )}
       />
+
+      <Route
+       component={PageNotFound}
+      />
+
     </Switch>
   );
 }
@@ -47,7 +56,8 @@ const App = (props) => {
 const mapStateToProps = (state) => {
   return {
     isLogin: state.isLogin,
-    loading: state.loading
+    loading: state.loading,
+    error: state.error
   }
 }
 

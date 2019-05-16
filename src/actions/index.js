@@ -1,4 +1,19 @@
-import { checkCredentials } from '../utils/checkCredentials';
+import { checkCredentials } from '../utils/checkCredentials'
+
+const onBoardCreate = (data) => {
+  return {
+    type: 'ON_BOARD_CREATE',
+    payload: data
+  }
+}
+
+const addListTitle = (title, boardId) => {
+  return {
+    type: 'ADD_LIST_TITLE',
+    payload: title,
+    boardId: boardId
+  }
+}
 
 const fetchData = (data) => {
   return {
@@ -21,8 +36,8 @@ const fetchDataError = (data) => {
   }
 }
 
-const requestData = () => (dispatch) => {
-  dispatch(fetchData());
+const requestData = (data) => (dispatch) => {
+  dispatch(fetchData(data));
 
   fetch('https://www.balldontlie.io/api/v1/players')
   .then((response) => {
@@ -33,8 +48,12 @@ const requestData = () => (dispatch) => {
   })
   .then((myResponse) => {
     console.log(myResponse);
+    console.log(data.login)
     setTimeout(() => {
-      dispatch(fetchDataSuccess())
+      if (data.login == 1 && data.password == 1) {
+        return dispatch(fetchDataSuccess())
+      }
+      dispatch(fetchDataError());
     }, 2000)
   })
   .catch(() => {
@@ -46,5 +65,7 @@ export {
   fetchData,
   fetchDataSuccess,
   fetchDataError,
-  requestData
+  requestData,
+  onBoardCreate,
+  addListTitle
 }

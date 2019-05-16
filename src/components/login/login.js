@@ -30,13 +30,15 @@ class Login extends Component {
   }
 
   render () {
-    const { isLogin, loading } = this.props;
+    const { isLogin, loading, error } = this.props;
+    console.log(this.props)
 
     const loader = (!isLogin && loading) ? <h1>loading...</h1> : null;
     const redirect = (isLogin && !loading) ? <Redirect to="/profile" /> : null;
+    const errorMsg = error ? <h1>error, you fool </h1> : null;
 
     const content = () => {
-      if (!loading && !isLogin) {
+      if (!loading && !isLogin && !error) {
         return (
           <React.Fragment>
             <input type="text" name="login" placeholder="login" onChange={this.onLoginHandler} />
@@ -54,6 +56,7 @@ class Login extends Component {
             { content() }
             { loader }
             { redirect }
+            { errorMsg }
         </div>
       )
   }

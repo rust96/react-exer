@@ -1,0 +1,45 @@
+body {
+  background-color: #cbe5ff;
+}
+.board-creator {
+  width: 430px;
+
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.board-creator__input {
+  width: 430px;
+  height: 40px;
+
+  margin-bottom: 20px;
+
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 5px;
+}
+.button {
+  width: 200px;
+  padding: 9px 0;
+
+  background-color: #a04ae8;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+.button_cancel {
+  margin-right: 30px;
+}
+
+.board-creator__create {
+  font-size: 21px;
+  font-weight: bold;
+}
+.button_non-active {
+  display: block;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  font-weight: 500;
+}
