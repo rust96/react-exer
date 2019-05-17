@@ -46,13 +46,19 @@ const updateListTitle = (state, action) => {
     return b.id == action.boardId;
   });
 
-  const oldCells = needBoard.cells;
-  const newCells = [...oldCells, action.payload];
-  console.log(newCells)
+  const newObj = {
+    title: action.payload,
+    elements: []
+  }
+
+  const newCells2 = [
+    ...needBoard.cells,
+    newObj
+  ];
 
   const newB = {
     ...needBoard,
-    cells: newCells
+    cells: newCells2
   }
 
   const newBoards = [
@@ -67,6 +73,34 @@ const updateListTitle = (state, action) => {
   }
 }
 
+const updateListName = (state, action) => {
+  // const needBoard = state.boards.find((b) => {
+  //   return b.id == action.boardId;
+  // });
+  //
+  // // const oldCells = needBoard.cells;
+  // const newCells = {
+  //   title: action.payload,
+  //   elements: needBoard.cells
+  // }
+  //
+  // const newB = {
+  //   ...needBoard,
+  //   cells: newCells
+  // }
+  //
+  // const newBoards = [
+  //   ...state.boards.slice(0, parseInt(action.boardId)),
+  //   newB,
+  //   ...state.boards.slice(parseInt(action.boardId) + 1)
+  // ];
+  //
+  // return {
+  //   ...state,
+  //   boards: newBoards
+  // }
+}
+
 const reducer = (state = initialState, action) => {
   console.log(action.type, action.payload)
 
@@ -77,6 +111,9 @@ const reducer = (state = initialState, action) => {
 
     case 'ADD_LIST_TITLE':
       return updateListTitle(state, action);
+
+    case 'ADD_LIST_NAME':
+      return updateListName(state, action);
 
     case 'FETCH_DATA':
       return {

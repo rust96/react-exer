@@ -12,7 +12,6 @@ class News extends Component {
   }
 
   render () {
-    console.log(this.props.boards)
     const id = this.props.match.params.id;
 
     const currentBoard = this.props.boards.find((b) => {

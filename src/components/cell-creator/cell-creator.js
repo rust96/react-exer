@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './cell-creator.css';
 import CellItem from '../cell-item';
 import TaskCreator from '../task-creator';
+import { Button } from 'reactstrap';
 
 class CellCreator extends Component {
   state = {
@@ -15,24 +16,32 @@ class CellCreator extends Component {
   render () {
     const { cells } = this.props;
 
+    // const renderCells = cells.elements.map((c, idx) => {
+    //   return (
+    //     <div className="block" key={idx}>
+    //       <TaskCreator />
+    //       <CellItem cell={c} />
+    //     </div>
+    //   )
+    // });
+
     const renderCells = cells.map((c, idx) => {
       return (
-        <div className="block">
-          <TaskCreator />
-          <CellItem key={idx} cell={c} />
-        </div>
+        <p key={idx}>{ c.title }</p>
       )
     });
 
-    if (cells) {
+
+    if (cells[0]) {
       return (
         <div className="flex">
+          <p>{ cells.title }</p>
           { renderCells }
           <input type="text"
             value={this.state.cellName}
             onChange={this.onCellChange}
           />
-          <button onClick={() => this.props.addListTitle(this.state.cellName, this.props.currentBoardId)}>Добавить список</button>
+        <Button onClick={() => this.props.addListTitle(this.state.cellName, this.props.currentBoardId)}>Добавить список</Button>
         </div>
       )
     }
@@ -43,7 +52,7 @@ class CellCreator extends Component {
           value={this.state.cellName}
           onChange={this.onCellChange}
         />
-        <button onClick={() => this.props.addListTitle(this.state.cellName, this.props.currentBoardId)}>Добавить список</button>
+      <Button onClick={() => this.props.addListTitle(this.state.cellName, this.props.currentBoardId)}>Добавить список</Button>
       </React.Fragment>
     )
   }

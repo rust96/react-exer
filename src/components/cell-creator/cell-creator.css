@@ -1,5 +1,6 @@
 .flex {
   display: flex;
+  align-items: flex-start;
 }
 .cell {
   width: 90%;
