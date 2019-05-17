@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PageNotFound from '../page-not-found';
 import Header from '../header';
 import CellCreator from '../cell-creator';
+import ListRow from '../list-row';
 import { addListTitle } from '../../actions';
 
 class News extends Component {
@@ -31,6 +32,7 @@ class News extends Component {
           addListTitle={this.props.addListTitle}
           cells={currentBoard.cells}
         />
+      <ListRow board={currentBoard} />
       </div>
     )
   }
