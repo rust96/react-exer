@@ -26,7 +26,7 @@ class News extends Component {
     return (
       <div>
         <Header />
-        <h1>News #{id}</h1>
+        <h1>Board #{id}</h1>
         <CellCreator
           currentBoardId={id}
           addListTitle={this.props.addListTitle}

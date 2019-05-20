@@ -16,43 +16,13 @@ class CellCreator extends Component {
   render () {
     const { cells } = this.props;
 
-    // const renderCells = cells.elements.map((c, idx) => {
-    //   return (
-    //     <div className="block" key={idx}>
-    //       <TaskCreator />
-    //       <CellItem cell={c} />
-    //     </div>
-    //   )
-    // });
-
-    const renderCells = cells.map((c, idx) => {
-      return (
-        <p key={idx}>{ c.title }</p>
-      )
-    });
-
-
-    if (cells[0]) {
-      return (
-        <div className="flex">
-          <p>{ cells.title }</p>
-          { renderCells }
-          <input type="text"
-            value={this.state.cellName}
-            onChange={this.onCellChange}
-          />
-        <Button onClick={() => this.props.addListTitle(this.state.cellName, this.props.currentBoardId)}>Добавить список</Button>
-        </div>
-      )
-    }
-
     return (
       <React.Fragment>
         <input type="text"
           value={this.state.cellName}
           onChange={this.onCellChange}
         />
-      <Button onClick={() => this.props.addListTitle(this.state.cellName, this.props.currentBoardId)}>Добавить список</Button>
+        <Button onClick={() => this.props.addListTitle(this.state.cellName, this.props.currentBoardId)}>Добавить список</Button>
       </React.Fragment>
     )
   }

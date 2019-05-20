@@ -1,0 +1,9 @@
+.flex {
+  display: flex;
+}
+.list-block {
+  padding: 30px;
+  margin-right: 10px;
+  border: 3px solid grey;
+  border-radius: 3px;
+}
