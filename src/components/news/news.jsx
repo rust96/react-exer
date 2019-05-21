@@ -24,15 +24,16 @@ class News extends Component {
     }
 
     return (
-      <div>
-        <Header />
-        <h1>Board #{id}</h1>
-        <CellCreator
-          currentBoardId={id}
-          addListTitle={this.props.addListTitle}
-          cells={currentBoard.cells}
-        />
-      <ListRow board={currentBoard} />
+      <div className="wrapper">
+        <div className="flex">
+          <ListRow board={currentBoard} />
+          <CellCreator
+            currentBoardId={id}
+            addListTitle={this.props.addListTitle}
+            cells={currentBoard.cells}
+          />
+        </div>
+
       </div>
     )
   }

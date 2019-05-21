@@ -6,7 +6,8 @@ import { Button } from 'reactstrap';
 
 class CellCreator extends Component {
   state = {
-    cellName: ''
+    cellName: '',
+    addMode: true
   }
 
   onCellChange = (e) => {
@@ -14,16 +15,36 @@ class CellCreator extends Component {
   }
 
   render () {
+
     const { cells } = this.props;
+    const { addMode } = this.state;
+
+    if (addMode) {
+      return (
+        <div className="list-block">
+          <div className="list-block__inner">
+            <input type="text"
+              className="input-task task"
+              placeholder="Введите название карточки"
+              value={this.state.cellName}
+              onChange={this.onCellChange}
+              onClick={() => this.props.addListTitle(this.state.cellName, this.props.currentBoardId)}
+            />
+
+          <div className="flex">
+            <button className="btn btn_green">Добавить карточку</button>
+            <button className="btn">+</button>
+          </div>
+        </div>
+      </div>
+      );
+    };
 
     return (
-      <React.Fragment>
-        <input type="text"
-          value={this.state.cellName}
-          onChange={this.onCellChange}
-        />
-        <Button onClick={() => this.props.addListTitle(this.state.cellName, this.props.currentBoardId)}>Добавить список</Button>
-      </React.Fragment>
+      <div className="list-block">
+
+      <p className="add-list__btn">Добавить еще одну колонку</p>
+      </div>
     )
   }
 }

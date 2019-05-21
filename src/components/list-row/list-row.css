@@ -2,8 +2,55 @@
   display: flex;
 }
 .list-block {
-  padding: 30px;
+  width: 272px;
+
   margin-right: 10px;
-  border: 3px solid grey;
   border-radius: 3px;
+  background-color: #DFE3E6
+}
+
+.list-block__inner {
+  width: calc(100% - 24px);
+
+  margin-left: auto;
+  margin-right: auto;
+}
+.task {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 8px;
+
+  padding: 8px 12px;
+
+  background-color: white;
+  box-shadow: 0px 1px 4px rgba(9, 45, 66, 0.25);
+  border-radius: 3px;
+
+  line-height: 19px;
+  font-size: 13px;
+}
+.task:last-child {
+  margin-bottom: 0;
+}
+.task__item {
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+.list-title {
+  margin-top: 8px;
+  margin-bottom: 10px;
+
+  font-weight: bold;
+  font-size: 13px;
+}
+.input-task {
+  border: none;
+  margin-top: 8px;
+  width: 100%;
+}
+.btn_green {
+  background-color: #39C071;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
 }

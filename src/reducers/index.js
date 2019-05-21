@@ -48,7 +48,17 @@ const updateListTitle = (state, action) => {
 
   const newObj = {
     title: action.payload,
-    elements: []
+    elements: [
+      'Помыть посуду',
+      'Помыть посуду',
+      'Помыть посуду',
+      'Помыть посуду',
+      'Помыть посуду',
+      'Помыть посуду',
+      'Помыть посуду',
+      'Помыть посуду',
+      'Помыть посуду'
+    ]
   }
 
   const newCells2 = [
