@@ -29,23 +29,6 @@ const App = (props) => {
       />
 
       <Route
-       path="/profile"
-       render={() => (
-         <Profile
-          isLogin={props.isLogin}
-          loading={props.loading} />
-       )}
-      />
-
-      <Route
-       path="/login"
-       render={() => (
-         <Login
-          { ...props } />
-       )}
-      />
-
-      <Route
        component={PageNotFound}
       />
 
@@ -53,12 +36,4 @@ const App = (props) => {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isLogin: state.isLogin,
-    loading: state.loading,
-    error: state.error
-  }
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

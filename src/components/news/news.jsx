@@ -4,7 +4,7 @@ import PageNotFound from '../page-not-found';
 import Header from '../header';
 import CellCreator from '../cell-creator';
 import ListRow from '../list-row';
-import { addListTitle } from '../../actions';
+import { addListTitle, addTask } from '../../actions';
 
 class News extends Component {
 
@@ -12,7 +12,12 @@ class News extends Component {
     this.props.addListTitle(title, boardId)
   }
 
+  addTask = (task, boardId) => {
+    this.props.addTask(task, boardId)
+  }
+
   render () {
+    console.log(this.props.addTask)
     const id = this.props.match.params.id;
 
     const currentBoard = this.props.boards.find((b) => {
@@ -26,7 +31,11 @@ class News extends Component {
     return (
       <div className="wrapper">
         <div className="flex">
-          <ListRow board={currentBoard} />
+          <ListRow
+            board={currentBoard}
+            addTask={this.props.addTask}
+         />
+
           <CellCreator
             currentBoardId={id}
             addListTitle={this.props.addListTitle}
@@ -49,9 +58,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addListTitle: (title, boardId) => {
       dispatch(addListTitle(title, boardId))
+    },
+    addTask: () => {
+      dispatch(addTask())
     }
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(News);

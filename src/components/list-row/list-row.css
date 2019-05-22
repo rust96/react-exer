@@ -3,6 +3,7 @@
 }
 .list-block {
   width: 272px;
+  min-width: 272px;
 
   margin-right: 10px;
   border-radius: 3px;

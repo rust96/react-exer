@@ -28,11 +28,14 @@ class CellCreator extends Component {
               placeholder="Введите название карточки"
               value={this.state.cellName}
               onChange={this.onCellChange}
-              onClick={() => this.props.addListTitle(this.state.cellName, this.props.currentBoardId)}
             />
 
           <div className="flex">
-            <button className="btn btn_green">Добавить карточку</button>
+            <button
+              className="btn btn_green"
+              onClick={() => this.props.addListTitle(this.state.cellName, this.props.currentBoardId)}>
+              Добавить карточку
+            </button>
             <button className="btn">+</button>
           </div>
         </div>

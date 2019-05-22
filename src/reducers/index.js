@@ -111,6 +111,13 @@ const updateListName = (state, action) => {
   // }
 }
 
+const addTask = (state, action) => {
+  console.log(state);
+  return {
+    ...state
+  }
+}
+
 const reducer = (state = initialState, action) => {
   console.log(action.type, action.payload)
 
@@ -124,6 +131,9 @@ const reducer = (state = initialState, action) => {
 
     case 'ADD_LIST_NAME':
       return updateListName(state, action);
+
+    case 'ADD_TASK':
+      return addTask(state, action);
 
     case 'FETCH_DATA':
       return {

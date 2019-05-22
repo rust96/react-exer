@@ -2,21 +2,17 @@ import React from 'react';
 import TaskCreator from '../task-creator';
 import './list-row.css';
 
-const ListRow = ({ board: { cells, elements } }) => {
-  console.log(cells)
+const ListRow = ({ board: { cells, elements, id }, addTask}) => {
+  console.log(addTask)
   return (
     <div className="flex">
-      {
-        cells.map((c, idx) => {
-          return renderLists(c, idx);
-        })
-      }
+      { cells.map((c, idx) => renderLists(c, idx, id, addTask)) }
     </div>
   );
 }
 
 
-const renderLists = ({ title, elements }, idx) => {
+const renderLists = ({ title, elements }, idx, boardId, fn) => {
 
   return (
     <div key={idx} className="list-block">
@@ -25,7 +21,9 @@ const renderLists = ({ title, elements }, idx) => {
           <p className="list-title">{ title }</p>
           { renderTasks(elements) }
         </div>
-        <TaskCreator />
+        <TaskCreator
+          boardId={boardId}
+          addTask={fn} />
       </div>
 
     </div>

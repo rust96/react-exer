@@ -43,6 +43,12 @@ export const addListName = (name) => {
   }
 }
 
+export const addTask = () => {
+  return {
+    type: 'ADD_TASK',
+  }
+}
+
 export const requestData = (data) => (dispatch) => {
   dispatch(fetchData(data));
 
