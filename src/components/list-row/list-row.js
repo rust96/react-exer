@@ -23,6 +23,7 @@ const renderLists = ({ title, elements }, idx, boardId, fn) => {
         </div>
         <TaskCreator
           boardId={boardId}
+          listIdx={idx}
           addTask={fn} />
       </div>
 

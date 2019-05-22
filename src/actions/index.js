@@ -43,9 +43,12 @@ export const addListName = (name) => {
   }
 }
 
-export const addTask = () => {
+export const addTask = (task, boardId, listIdx) => {
   return {
     type: 'ADD_TASK',
+    payload: task,
+    boardId,
+    listIdx
   }
 }
 

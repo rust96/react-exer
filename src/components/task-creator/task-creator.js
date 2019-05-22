@@ -16,7 +16,7 @@ class TaskCreator extends Component {
   }
 
   render () {
-    console.log(this.props.addTask)
+    const { boardId, addTask, listIdx } = this.props;
     const { addTaskActive, taskName } = this.state;
 
     if (addTaskActive) {
@@ -33,7 +33,7 @@ class TaskCreator extends Component {
           <div className="flex">
             <button
               className="btn btn_green"
-              onClick={this.props.addTask}>
+              onClick={() => addTask(taskName, boardId, listIdx)}>
               Добавить задание
             </button>
             <button onClick={this.toggleAddTask}>x</button>

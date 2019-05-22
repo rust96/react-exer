@@ -59,8 +59,8 @@ const mapDispatchToProps = (dispatch) => {
     addListTitle: (title, boardId) => {
       dispatch(addListTitle(title, boardId))
     },
-    addTask: () => {
-      dispatch(addTask())
+    addTask: (task, boardId, listIdx) => {
+      dispatch(addTask(task, boardId, listIdx))
     }
   }
 }

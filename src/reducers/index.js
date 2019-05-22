@@ -112,9 +112,59 @@ const updateListName = (state, action) => {
 }
 
 const addTask = (state, action) => {
-  console.log(state);
+  const needList = state.boards.
+    find((b) => b.id == action.boardId).
+    cells[action.listIdx].
+    elements;
+
+  const allCells = state.boards.
+    find((b) => b.id == action.boardId).
+    cells;
+
+  const newList = [
+    ...needList,
+    action.payload
+  ];
+
+  const needCells = state.boards.
+    find((b) => b.id == action.boardId).
+    cells[action.listIdx];
+
+  const newCells = {
+    ...needCells,
+    elements: newList
+  };
+
+  const allNewCells = [
+    ...allCells.slice(0, action.listIdx),
+    newCells,
+    ...allCells.slice(action.listIdx + 1)
+  ];
+
+  const needBoard = state.boards.
+    find((b) => b.id == action.boardId);
+
+  const newBoards = {
+    ...needBoard,
+    cells: allNewCells
+  }
+
+  const newState = {
+    ...state,
+    boards: [
+      ...state.boards.slice(0, action.boardId),
+      newBoards,
+      ...state.boards.slice(action.boardId + 1)
+    ]
+  }
+
   return {
-    ...state
+    ...state,
+    boards: [
+      ...state.boards.slice(0, action.boardId),
+      newBoards,
+      ...state.boards.slice(action.boardId + 1)
+    ]
   }
 }
 
