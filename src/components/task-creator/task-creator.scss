@@ -7,47 +7,36 @@ p {
 }
 
 body {
-  background-image: url('https://yastatic.net/s3/bro-bg-store/bd1eac49-e68a-4943-b205-e10b8cfa74ff.jpg');
+  background-image: url('/img/forest.jpg');
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
 .add-list__btn {
+   display: block;
    position: relative;
 
    min-height: 43px;
 
-   padding-left: 25px;
+   padding-left: 22px;
    padding-top: 12px;
    padding-bottom: 12px;
 
    color: #6B808C;
    font-size: 13px;
-}
+   &::before {
+     content: "";
 
-.add-list__btn::before,
-.add-list__btn::after {
-  content: "";
+     position: absolute;
+     top: 14px;
+     left: 0;
 
-  position: absolute;
+     width: 15px;
+     height: 15px;
 
-  background-color: #6B808C;
-}
-.add-list__btn::before {
-  top: 14px;
-  left: 13px;
-
-  width: 2px;
-  height: 15px;
-}
-.add-list__btn::after {
-  top: 20px;
-  left: 7px;
-  margin: 0;
-
-  width: 15px;
-  height: 2px;
+     background-image: url('/img/vector.svg');
+   }
 }
 .input-creator {
   width: 100%;

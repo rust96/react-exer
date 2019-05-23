@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './task-creator.css';
+import './task-creator.scss';
 
 class TaskCreator extends Component {
   state = {
@@ -48,8 +48,8 @@ class TaskCreator extends Component {
     }
 
     return (
-      <p className="btn add-list__btn"
-      onClick={this.toggleAddTask}>Добавить еще одну карточку</p>
+      <a className="add-list__btn"
+      onClick={this.toggleAddTask}>Добавить еще одну карточку</a>
     )
   }
 }

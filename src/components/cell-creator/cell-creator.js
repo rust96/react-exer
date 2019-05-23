@@ -7,7 +7,7 @@ import { Button } from 'reactstrap';
 class CellCreator extends Component {
   state = {
     cellName: '',
-    addMode: true
+    addMode: false
   }
 
   addNewList = () => {
@@ -21,6 +21,10 @@ class CellCreator extends Component {
     this.setState({ cellName: e.target.value })
   }
 
+  toggleAddMode = () => {
+    this.setState({ addMode: !this.state.addMode })
+  }
+
   render () {
     const { cells, currentBoardId } = this.props;
     const { addMode, cellName } = this.state;
@@ -31,7 +35,7 @@ class CellCreator extends Component {
           <div className="list-block__inner">
             <input type="text"
               className="input-task task"
-              placeholder="Введите название карточки"
+              placeholder="Введите название колонки"
               value={cellName}
               onChange={this.onCellChange}
             />
@@ -40,9 +44,10 @@ class CellCreator extends Component {
             <button
               className="btn btn_green"
               onClick={() => this.addNewList(cellName, currentBoardId)}>
-              Добавить карточку
+              Добавить колонку
             </button>
-            <button className="btn">+</button>
+
+            <button className="btn" onClick={this.toggleAddMode}>+</button>
           </div>
         </div>
       </div>
@@ -51,7 +56,9 @@ class CellCreator extends Component {
 
     return (
       <div className="list-block">
-        <p className="add-list__btn">Добавить еще одну колонку</p>
+        <div className="list-block__inner">
+          <a className="add-list__btn" onClick={this.toggleAddMode}>Добавить еще одну колонку</a>
+        </div>
       </div>
     )
   }
