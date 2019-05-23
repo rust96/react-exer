@@ -12,7 +12,6 @@ const BoardsRow = ({ boards }) => {
   }
 
   const renderBoards = boards.map(({ id, title }, idx) => {
-    console.log(id)
     return (
       <BoardItem
         key={idx}

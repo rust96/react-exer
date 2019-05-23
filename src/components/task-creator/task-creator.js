@@ -15,6 +15,11 @@ class TaskCreator extends Component {
     this.setState({ taskName: e.target.value })
   }
 
+  createTask = (taskName, boardId, listIdx) => {
+    this.props.addTask(taskName, boardId, listIdx);
+    this.setState({ taskName: '' });
+  }
+
   render () {
     const { boardId, addTask, listIdx } = this.props;
     const { addTaskActive, taskName } = this.state;
@@ -33,7 +38,7 @@ class TaskCreator extends Component {
           <div className="flex">
             <button
               className="btn btn_green"
-              onClick={() => addTask(taskName, boardId, listIdx)}>
+              onClick={() => this.createTask(taskName, boardId, listIdx)}>
               Добавить задание
             </button>
             <button onClick={this.toggleAddTask}>x</button>

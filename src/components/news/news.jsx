@@ -17,12 +17,9 @@ class News extends Component {
   }
 
   render () {
-    console.log(this.props.addTask)
     const id = this.props.match.params.id;
 
-    const currentBoard = this.props.boards.find((b) => {
-      return b.id == id;
-    })
+    const currentBoard = this.props.boards.find((b) => b.id == id);
 
     if (!currentBoard) {
       return <PageNotFound />
@@ -34,7 +31,7 @@ class News extends Component {
           <ListRow
             board={currentBoard}
             addTask={this.props.addTask}
-         />
+          />
 
           <CellCreator
             currentBoardId={id}
@@ -42,7 +39,6 @@ class News extends Component {
             cells={currentBoard.cells}
           />
         </div>
-
       </div>
     )
   }

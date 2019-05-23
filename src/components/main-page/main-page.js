@@ -1,31 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Header from '../header';
 import BoardCreator from '../board-creator'
 import BoardsRow from '../boards-row';
 
 import './main-page.css';
 
-const MainPage = (props) => {
-  console.log(props)
+const MainPage = ({ boards }) => {
   return (
     <div>
-      <Header />
-      <h1 className="main-page__title">Привет, ты на главной странице клона Трелло!</h1>
+      <h1 className="main-page__title">Для начала работы выберите доску</h1>
       <BoardCreator />
-      <BoardsRow boards={props.boards}/>
+      <BoardsRow boards={boards}/>
      </div>
   )
 };
 
-const mapStateToProps = ({ title, boards }) => {
+const mapStateToProps = ({ boards }) => {
   return {
-    title,
     boards
   }
 }
-
-
 
 export default connect(mapStateToProps)(MainPage);

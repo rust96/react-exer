@@ -1,0 +1,44 @@
+.board__item {
+  display: block;
+
+  width: 272px;
+  min-width: 272px;
+
+  margin-right: 20px;
+
+  list-style-type: none;
+
+  border-radius: 5px;
+  background-color: #DFE3E6;
+  &:hover {
+    transform: scale(1.01);
+    .board__link {
+      color: black;
+      text-decoration: underline;
+    }
+  }
+}
+.board__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  color: black;
+  font-size: 13px;
+}
+.board__wrapper {
+  width: 100%;
+  height: 100%;
+
+  padding: 8px 12px;
+
+  border-radius: 3px;
+}
+
+.board__inner {
+  height: 100%;
+
+  padding: 8px 12px;
+
+  background-color: white;
+}

@@ -29,14 +29,19 @@
 
   line-height: 19px;
   font-size: 13px;
+  &:hover {
+    background-color: #f4f5f7;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__item {
+    vertical-align: middle;
+    margin-bottom: 0;
+  }
 }
-.task:last-child {
-  margin-bottom: 0;
-}
-.task__item {
-  vertical-align: middle;
-  margin-bottom: 0;
-}
+
 .list-title {
   margin-top: 8px;
   margin-bottom: 10px;

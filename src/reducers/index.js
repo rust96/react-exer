@@ -48,17 +48,7 @@ const updateListTitle = (state, action) => {
 
   const newObj = {
     title: action.payload,
-    elements: [
-      'Помыть посуду',
-      'Помыть посуду',
-      'Помыть посуду',
-      'Помыть посуду',
-      'Помыть посуду',
-      'Помыть посуду',
-      'Помыть посуду',
-      'Помыть посуду',
-      'Помыть посуду'
-    ]
+    elements: []
   }
 
   const newCells2 = [
@@ -81,34 +71,6 @@ const updateListTitle = (state, action) => {
     ...state,
     boards: newBoards
   }
-}
-
-const updateListName = (state, action) => {
-  // const needBoard = state.boards.find((b) => {
-  //   return b.id == action.boardId;
-  // });
-  //
-  // // const oldCells = needBoard.cells;
-  // const newCells = {
-  //   title: action.payload,
-  //   elements: needBoard.cells
-  // }
-  //
-  // const newB = {
-  //   ...needBoard,
-  //   cells: newCells
-  // }
-  //
-  // const newBoards = [
-  //   ...state.boards.slice(0, parseInt(action.boardId)),
-  //   newB,
-  //   ...state.boards.slice(parseInt(action.boardId) + 1)
-  // ];
-  //
-  // return {
-  //   ...state,
-  //   boards: newBoards
-  // }
 }
 
 const addTask = (state, action) => {
@@ -179,32 +141,8 @@ const reducer = (state = initialState, action) => {
     case 'ADD_LIST_TITLE':
       return updateListTitle(state, action);
 
-    case 'ADD_LIST_NAME':
-      return updateListName(state, action);
-
     case 'ADD_TASK':
       return addTask(state, action);
-
-    case 'FETCH_DATA':
-      return {
-        ...state,
-        loading: true
-      }
-
-    case 'FETCH_DATA_SUCCESS':
-      return {
-        ...state,
-        loading: false,
-        isLogin: true
-      }
-
-    case 'FETCH_DATA_ERROR':
-      return {
-        ...state,
-        loading: false,
-        isLogin: false,
-        error: true
-      }
 
     default:
       return state;

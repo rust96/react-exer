@@ -3,12 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MainPage from '../main-page';
 import News from '../news';
-import Profile from '../profile';
-import Login from '../login';
 import PageNotFound from '../page-not-found';
 
-const App = (props) => {
-  console.log(props)
+const App = () => {
   return (
     <Switch>
       <Route
@@ -31,7 +28,6 @@ const App = (props) => {
       <Route
        component={PageNotFound}
       />
-
     </Switch>
   );
 }

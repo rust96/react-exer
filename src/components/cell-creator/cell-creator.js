@@ -10,14 +10,20 @@ class CellCreator extends Component {
     addMode: true
   }
 
+  addNewList = () => {
+    const { addListTitle, currentBoardId } = this.props;
+
+    addListTitle(this.state.cellName, currentBoardId);
+    this.setState({ cellName: '' });
+  }
+
   onCellChange = (e) => {
     this.setState({ cellName: e.target.value })
   }
 
   render () {
-
-    const { cells } = this.props;
-    const { addMode } = this.state;
+    const { cells, currentBoardId } = this.props;
+    const { addMode, cellName } = this.state;
 
     if (addMode) {
       return (
@@ -26,14 +32,14 @@ class CellCreator extends Component {
             <input type="text"
               className="input-task task"
               placeholder="Введите название карточки"
-              value={this.state.cellName}
+              value={cellName}
               onChange={this.onCellChange}
             />
 
           <div className="flex">
             <button
               className="btn btn_green"
-              onClick={() => this.props.addListTitle(this.state.cellName, this.props.currentBoardId)}>
+              onClick={() => this.addNewList(cellName, currentBoardId)}>
               Добавить карточку
             </button>
             <button className="btn">+</button>
@@ -45,8 +51,7 @@ class CellCreator extends Component {
 
     return (
       <div className="list-block">
-
-      <p className="add-list__btn">Добавить еще одну колонку</p>
+        <p className="add-list__btn">Добавить еще одну колонку</p>
       </div>
     )
   }
