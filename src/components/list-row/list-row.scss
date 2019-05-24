@@ -16,6 +16,11 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.tasks {
+  position: relative;
+}
+
 .task {
   margin-left: auto;
   margin-right: auto;
@@ -29,6 +34,14 @@
 
   line-height: 19px;
   font-size: 13px;
+  &_last {
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+
+    width: 100%;
+    height: 15px;
+  }
   &:hover {
     background-color: #f4f5f7;
   }
