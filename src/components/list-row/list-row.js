@@ -18,6 +18,7 @@ class ListRow extends Component {
   state = {
     margin: 0,
     marginMode: false,
+    marginHeight: 0,
     editListIdx: null,
     lastTask: false,
     rmTask: null,
@@ -36,17 +37,17 @@ class ListRow extends Component {
     this.setState({ addList: listIdx })
   }
 
-  dragStart = (idx, listIdx) => {
+  dragStart = (e, idx, listIdx) => {
     this.setState({
       rmTask: idx,
-      rmList: listIdx
+      rmList: listIdx,
+      marginHeight: e.currentTarget.offsetHeight + 20
     }, function () {
-      // console.log(this.state)
+      console.log(this.state.marginHeight)
     })
   }
 
   dragEnter = (e, idx, listIdx) => {
-    console.log(e.currentTarget.offsetHeight)
       this.setState({
         marginMode: true,
         margin: idx,
@@ -104,11 +105,11 @@ class ListRow extends Component {
 
       return tasks.map((task, idx) => {
         if (this.state.margin === idx && this.state.marginMode === true && listIdx === this.state.editListIdx && !this.state.lastTask) {
-            marginT = 60;
+            marginT = this.state.marginHeight;
             marginB = 8;
         } else if (this.state.lastTask && listIdx === this.state.editListIdx && idx === tasks.length - 1 && this.state.marginMode) {
           marginT = 0;
-          marginB = 50;
+          marginB = this.state.marginHeight;
         } else if (!this.state.marginMode) {
           marginT = 0;
           marginB = 8;
@@ -123,7 +124,7 @@ class ListRow extends Component {
               style={{marginTop:marginT + 'px', marginBottom:marginB + 'px'}}
               className="task"
               draggable
-              onDragStart={() => this.dragStart(idx, listIdx)}
+              onDragStart={(e) => this.dragStart(e, idx, listIdx)}
               onDragEnter={(e) => this.dragEnter(e, idx, listIdx)}
               onDragEnd={() => this.dragEnd(this.state.dragObject)}
               onDrop={(e) => this.setState({ marginMode: false }) }>
