@@ -1,25 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PageNotFound from '../page-not-found';
-import Header from '../header';
 import CellCreator from '../cell-creator';
 import ListRow from '../list-row';
-import { addListTitle, addTask, dragTask } from '../../actions';
+import { createList, addTask, dragTask } from '../../actions';
 
-class BoardPage extends Component {
+const BoardPage = ({ match: { params: { id } },
+   addTask, dragTask, createList, boards }) => {
 
-  addListTitle = (title, boardId) => {
-    this.props.addListTitle(title, boardId)
-  }
-
-  addTask = (task, boardId) => {
-    this.props.addTask(task, boardId)
-  }
-
-  render () {
-    const id = this.props.match.params.id;
-
-    const currentBoard = this.props.boards.find((b) => b.id == id);
+    const currentBoard = boards.find((b) => +id === b.id );
 
     if (!currentBoard) {
       return <PageNotFound />
@@ -30,32 +19,25 @@ class BoardPage extends Component {
         <div className="flex">
           <ListRow
             board={currentBoard}
-            addTask={this.props.addTask}
-            dragTask={this.props.dragTask}
+            addTask={addTask}
+            dragTask={dragTask}
             boardId={id}
           />
 
           <CellCreator
             currentBoardId={id}
-            addListTitle={this.props.addListTitle}
+            createList={createList}
             cells={currentBoard.cells}
           />
         </div>
       </div>
     )
   }
-}
-
-const mapStateToProps = ({ boards }) => {
-  return {
-    boards
-  }
-}
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addListTitle: (title, boardId) => {
-      dispatch(addListTitle(title, boardId))
+    createList: (title, boardId) => {
+      dispatch(createList(title, boardId))
     },
     addTask: (task, boardId, listIdx) => {
       dispatch(addTask(task, boardId, listIdx))
@@ -66,4 +48,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardPage);
+export default connect(({boards}) => ({ boards }),mapDispatchToProps)(BoardPage);

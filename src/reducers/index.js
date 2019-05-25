@@ -22,7 +22,7 @@ const updateBoards = (state, action) => {
 
 const updateListTitle = (state, action) => {
   const needBoard = state.boards.find((b) => {
-    return b.id == action.boardId;
+    return b.id === +action.boardId;
   });
 
   const newObj = {
@@ -53,23 +53,20 @@ const updateListTitle = (state, action) => {
 }
 
 const addTask = (state, action) => {
-  const needList = state.boards.
-    find((b) => b.id == action.boardId).
-    cells[action.listIdx].
-    elements;
+  const needList = state.boards
+    .find((b) => b.id === +action.boardId).cells[action.listIdx].elements;
 
-  const allCells = state.boards.
-    find((b) => b.id == action.boardId).
-    cells;
+  const allCells = state.boards
+    .find((b) => b.id === +action.boardId).cells;
 
   const newList = [
     ...needList,
     action.payload
   ];
 
-  const needCells = state.boards.
-    find((b) => b.id == action.boardId).
-    cells[action.listIdx];
+  const needCells = state.boards
+    .find((b) => b.id === +action.boardId)
+    .cells[action.listIdx];
 
   const newCells = {
     ...needCells,
@@ -82,21 +79,12 @@ const addTask = (state, action) => {
     ...allCells.slice(action.listIdx + 1)
   ];
 
-  const needBoard = state.boards.
-    find((b) => b.id == action.boardId);
+  const needBoard = state.boards
+    .find((b) => b.id === +action.boardId);
 
   const newBoards = {
     ...needBoard,
     cells: allNewCells
-  }
-
-  const newState = {
-    ...state,
-    boards: [
-      ...state.boards.slice(0, action.boardId),
-      newBoards,
-      ...state.boards.slice(action.boardId + 1)
-    ]
   }
 
   return {
@@ -118,8 +106,6 @@ const dragTask = (state, action) => {
   const removedTask = state.boards[action.boardId].cells[action.rmList].elements[action.rmTask];
   const choosenTasksArr = state.boards[action.boardId].cells[action.addList].elements;
   const choosenTasksCell = state.boards[action.boardId].cells[action.addList];
-  const choosenListRm = state.boards[action.boardId].cells[action.rmList];
-  const choosenBoard = state.boards[action.boardId];
 
 
   let newAddTasks = [];
@@ -165,16 +151,31 @@ const dragTask = (state, action) => {
   const removingCell = newState.boards[action.boardId].cells[action.rmList];
 
   let newRmTasks = [];
-  if (action.rmList === action.addList) {
+  if (action.rmList === action.addList && action.rmTask < action.addTask) {
+    newRmTasks = [
+      ...removingCell.elements.slice(0, action.rmTask),
+      ...removingCell.elements.slice(action.rmTask + 1)
+    ]
+  } else if (action.rmList === action.addList && action.rmTask > action.addTask) {
+    console.log(removingCell.elements, action.rmTask);
+
     newRmTasks = [
       ...removingCell.elements.slice(0, action.rmTask + 1),
       ...removingCell.elements.slice(action.rmTask + 2)
     ]
+    console.log(newRmTasks)
+
   } else if (action.rmTask === 0) {
+    console.log(2)
+
     newRmTasks = [...removingCell.elements.slice(action.rmTask + 1)];
   } else if (action.rmTask === removingCell.elements.length - 1) {
+    console.log(3)
+
     newRmTasks = [...removingCell.elements.slice(0, action.rmTask)];
   } else {
+    console.log(4)
+
     newRmTasks = [
       ...removingCell.elements.slice(0, action.rmTask),
       ...removingCell.elements.slice(action.rmTask + 1)
@@ -214,10 +215,10 @@ const reducer = (state = initialState, action) => {
 
   switch (action.type) {
 
-    case 'ON_BOARD_CREATE':
+    case 'CREATE_BOARD':
       return updateBoards(state, action);
 
-    case 'ADD_LIST_TITLE':
+    case 'CREATE_LIST':
       return updateListTitle(state, action);
 
     case 'ADD_TASK':

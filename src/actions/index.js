@@ -1,15 +1,15 @@
-export const onBoardCreate = (data) => {
+export const createBoard = (data) => {
   return {
-    type: 'ON_BOARD_CREATE',
+    type: 'CREATE_BOARD',
     payload: data
   }
 }
 
-export const addListTitle = (title, boardId) => {
+export const createList = (title, boardId) => {
   return {
-    type: 'ADD_LIST_TITLE',
+    type: 'CREATE_LIST',
     payload: title,
-    boardId: boardId
+    boardId
   }
 }
 
@@ -23,7 +23,6 @@ export const addTask = (task, boardId, listIdx) => {
 }
 
 export const dragTask = (rmList, rmTask, addList, addTask, boardId) => {
-  console.log(rmList)
   return {
     type: 'DRAG_TASK',
     rmList,

@@ -11,19 +11,19 @@ const BoardsRow = ({ boards }) => {
     )
   }
 
-  const renderBoards = boards.map(({ id, title }, idx) => {
-    return (
-      <BoardItem
-        key={idx}
-        id={id}
-        title={title}
-     />
-    );
-  });
-
   return (
     <ul className="boards__list">
-      { renderBoards }
+      {
+        boards.map(({ id, title }, idx) => {
+          return (
+            <BoardItem
+              key={idx}
+              title={title}
+              id={id}
+           />
+          );
+        })
+      }
     </ul>
   )
 }

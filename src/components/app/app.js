@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 import MainPage from '../main-page';
 import BoardPage from '../board-page';
 import PageNotFound from '../page-not-found';

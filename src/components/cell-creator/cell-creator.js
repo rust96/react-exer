@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import './cell-creator.css';
-import CellItem from '../cell-item';
-import TaskCreator from '../task-creator';
-import { Button } from 'reactstrap';
 
 class CellCreator extends Component {
   state = {
@@ -11,9 +8,9 @@ class CellCreator extends Component {
   }
 
   addNewList = () => {
-    const { addListTitle, currentBoardId } = this.props;
+    const { createList, currentBoardId } = this.props;
 
-    addListTitle(this.state.cellName, currentBoardId);
+    createList(this.state.cellName, currentBoardId);
     this.setState({ cellName: '' });
   }
 
@@ -26,7 +23,7 @@ class CellCreator extends Component {
   }
 
   render () {
-    const { cells, currentBoardId } = this.props;
+    const { currentBoardId } = this.props;
     const { addMode, cellName } = this.state;
 
     if (addMode) {
@@ -57,7 +54,7 @@ class CellCreator extends Component {
     return (
       <div className="list-block">
         <div className="list-block__inner">
-          <a className="add-list__btn" onClick={this.toggleAddMode}>Добавить еще одну колонку</a>
+          <button className="add-list__btn" onClick={this.toggleAddMode}>Добавить еще одну колонку</button>
         </div>
       </div>
     )

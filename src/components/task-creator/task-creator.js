@@ -21,7 +21,7 @@ class TaskCreator extends Component {
   }
 
   render () {
-    const { boardId, addTask, listIdx } = this.props;
+    const { boardId, listIdx } = this.props;
     const { addTaskActive, taskName } = this.state;
 
     if (addTaskActive) {
@@ -48,8 +48,8 @@ class TaskCreator extends Component {
     }
 
     return (
-      <a className="add-list__btn"
-      onClick={this.toggleAddTask}>Добавить еще одну карточку</a>
+      <button className="add-list__btn"
+      onClick={this.toggleAddTask}>Добавить еще одну карточку</button>
     )
   }
 }

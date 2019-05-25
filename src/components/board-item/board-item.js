@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './board-item.scss';
 
-const newsPath = '/boards/';
-
 const BoardItem = ({ title, id }) => {
-  const remotePath = `${newsPath}${id}`;
+  const remotePath = `/boards/${id}`;
 
   return (
     <li className="board__item">

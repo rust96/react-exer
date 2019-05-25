@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { onBoardCreate } from '../../actions';
+import { createBoard } from '../../actions';
 
 import './board-creator.css';
-
 
 class BoardCreator extends Component {
 
@@ -20,24 +19,23 @@ class BoardCreator extends Component {
     this.setState({ boardName: e.target.value })
   }
 
-  createBoard = () => {
-    this.props.onBoardCreate(this.state.boardName);
-  }
-
   render () {
-    if (this.state.boardOpen) {
+    const { createBoard } = this.props;
+    const { boardOpen, boardName } = this.state;
+
+    if (boardOpen) {
       return (
         <div className="board-creator">
           <p className="board-creator__create">Создаем доску...</p>
 
           <input type="text" className="board-creator__input"
-            value={this.state.boardName}
+            value={boardName}
             onChange={this.onNameChange}
           />
 
           <div>
             <button className="button button_cancel" onClick={this.toggleCreating}>Отменить</button>
-            <button className="button button_save" onClick={this.createBoard}>Сохранить</button>
+            <button className="button button_save" onClick={() => createBoard(boardName)}>Сохранить</button>
           </div>
         </div>
       )
@@ -51,18 +49,12 @@ class BoardCreator extends Component {
   }
 }
 
-const mapStateToProps = ({ loading }) => {
-  return {
-    loading
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    onBoardCreate: (boardName) => {
-      dispatch(onBoardCreate(boardName));
+    createBoard: (boardName) => {
+      dispatch(createBoard(boardName));
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardCreator);
+export default connect(null, mapDispatchToProps)(BoardCreator);
