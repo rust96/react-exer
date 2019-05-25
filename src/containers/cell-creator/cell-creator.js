@@ -28,7 +28,7 @@ class CellCreator extends Component {
 
     if (addMode) {
       return (
-        <div className="list-block">
+        <div className="list-block cell-creator">
           <div className="list-block__inner">
             <input type="text"
               className="input-task task"
@@ -39,12 +39,12 @@ class CellCreator extends Component {
 
           <div className="flex">
             <button
-              className="btn btn_green"
+              className="button button_green"
               onClick={() => this.addNewList(cellName, currentBoardId)}>
               Добавить колонку
             </button>
 
-            <button className="btn" onClick={this.toggleAddMode}>+</button>
+            <button className="button button_close" onClick={this.toggleAddMode}></button>
           </div>
         </div>
       </div>
@@ -52,9 +52,9 @@ class CellCreator extends Component {
     };
 
     return (
-      <div className="list-block">
+      <div className="list-block cell-creator">
         <div className="list-block__inner">
-          <button className="add-list__btn" onClick={this.toggleAddMode}>Добавить еще одну колонку</button>
+          <button className="button button_add" onClick={this.toggleAddMode}>Добавить еще одну колонку</button>
         </div>
       </div>
     )

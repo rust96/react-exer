@@ -16,7 +16,7 @@ const BoardPage = ({ match: { params: { id } },
 
     return (
       <div className="wrapper">
-        <div className="flex">
+        <div className="flex list-wrapper">
           <ListRow
             board={currentBoard}
             createTask={createTask}

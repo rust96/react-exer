@@ -37,18 +37,20 @@ class TaskCreator extends Component {
 
           <div className="flex">
             <button
-              className="btn btn_green"
+              className="button button_green"
               onClick={() => this.createTask(taskName, boardId, listIdx)}>
               Добавить задание
             </button>
-            <button onClick={this.toggleAddTask}>x</button>
+            <button
+              className="button button_close"
+              onClick={this.toggleAddTask}></button>
           </div>
         </div>
       )
     }
 
     return (
-      <button className="add-list__btn"
+      <button className="button button_add"
       onClick={this.toggleAddTask}>Добавить еще одну карточку</button>
     )
   }

@@ -1,8 +1,6 @@
 import React from 'react';
 import BoardItem from '../../containers/board-item';
 
-import './boards-row.css'
-
 const BoardsRow = ({ boards }) => {
 
   if (boards.length === 0) {
@@ -12,7 +10,7 @@ const BoardsRow = ({ boards }) => {
   }
 
   return (
-    <ul className="boards__list">
+    <ul className="board__list">
       {
         boards.map(({ id, title }, idx) => {
           return (

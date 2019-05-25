@@ -4,6 +4,8 @@ import MainPage from '../main-page';
 import BoardPage from '../board-page';
 import PageNotFound from '../page-not-found';
 
+import './app.scss';
+
 const App = () => {
   return (
     <Switch>
