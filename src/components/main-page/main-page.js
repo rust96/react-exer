@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import BoardCreator from '../board-creator'
+import BoardCreator from '../../containers/board-creator'
 import BoardsRow from '../boards-row';
 
 import './main-page.css';

@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PageNotFound from '../page-not-found';
-import CellCreator from '../cell-creator';
-import ListRow from '../list-row';
-import { createList, addTask, dragTask } from '../../actions';
+import CellCreator from '../../containers/cell-creator';
+import ListRow from '../../containers/list-row';
+import { createList, createTask, dragTask } from '../../actions';
 
 const BoardPage = ({ match: { params: { id } },
-   addTask, dragTask, createList, boards }) => {
+   createTask, dragTask, createList, boards }) => {
 
     const currentBoard = boards.find((b) => +id === b.id );
 
@@ -19,7 +19,7 @@ const BoardPage = ({ match: { params: { id } },
         <div className="flex">
           <ListRow
             board={currentBoard}
-            addTask={addTask}
+            createTask={createTask}
             dragTask={dragTask}
             boardId={id}
           />
@@ -39,8 +39,8 @@ const mapDispatchToProps = (dispatch) => {
     createList: (title, boardId) => {
       dispatch(createList(title, boardId))
     },
-    addTask: (task, boardId, listIdx) => {
-      dispatch(addTask(task, boardId, listIdx))
+    createTask: (task, boardId, listIdx) => {
+      dispatch(createTask(task, boardId, listIdx))
     },
     dragTask: (rmList, rmTask, addList, addTask, boardId) => {
       dispatch(dragTask(rmList, rmTask, addList, addTask, boardId))

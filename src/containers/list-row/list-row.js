@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TaskCreator from '../task-creator';
-import TaskRow from '../task-row';
+import TaskRow from '../../components/task-row';
 import LastTask from './last-task';
 
 import './list-row.scss';
@@ -47,7 +47,7 @@ class ListRow extends Component {
       addTask: lastTaskIdx
     })
   }
-  
+
   dragEnd = () => {
     const { rmList, rmTask, addList, addTask } = this.state;
 
@@ -56,7 +56,7 @@ class ListRow extends Component {
   }
 
   render () {
-   const { board: { cells, id }, addTask } = this.props;
+   const { board: { cells, id }, createTask } = this.props;
 
     const renderLists = ({ title, elements }, idx, boardId, fn) => {
       return (
@@ -79,7 +79,7 @@ class ListRow extends Component {
             <TaskCreator
               boardId={boardId}
               listIdx={idx}
-              addTask={fn} />
+              createTask={fn} />
           </div>
         </div>
       );
@@ -87,7 +87,7 @@ class ListRow extends Component {
 
     return (
       <div className="flex">
-        { cells.map((c, idx) => renderLists(c, idx, id, addTask)) }
+        { cells.map((c, idx) => renderLists(c, idx, id, createTask)) }
       </div>
     )
   }

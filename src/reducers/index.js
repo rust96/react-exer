@@ -2,48 +2,47 @@ import { loadState } from '../localStorage';
 
 const initialState = loadState();
 
-const updateBoards = (state, action) => {
+const createBoard = (state, action) => {
+
   const newBoard = {
     id: state.boards.length,
     title: action.payload,
     cells: []
   }
 
-  const freshBoards = [
-    ...state.boards,
-    newBoard
-  ];
-
   return {
     ...state,
-    boards: freshBoards
+    boards: [
+      ...state.boards,
+      newBoard
+    ]
   }
 }
 
-const updateListTitle = (state, action) => {
+const createList = (state, action) => {
+  const { boardId, payload } = action;
+
   const needBoard = state.boards.find((b) => {
-    return b.id === +action.boardId;
+    return b.id === +boardId;
   });
 
-  const newObj = {
-    title: action.payload,
+  const newList = {
+    title: payload,
     elements: []
   }
 
-  const newCells2 = [
-    ...needBoard.cells,
-    newObj
-  ];
-
-  const newB = {
+  const newBoardList = {
     ...needBoard,
-    cells: newCells2
+    cells: [
+      ...needBoard.cells,
+      newList
+    ]
   }
 
   const newBoards = [
-    ...state.boards.slice(0, parseInt(action.boardId)),
-    newB,
-    ...state.boards.slice(parseInt(action.boardId) + 1)
+    ...state.boards.slice(0, parseInt(boardId)),
+    newBoardList,
+    ...state.boards.slice(parseInt(boardId) + 1)
   ];
 
   return {
@@ -52,21 +51,23 @@ const updateListTitle = (state, action) => {
   }
 }
 
-const addTask = (state, action) => {
+const createTask = (state, action) => {
+  const { boardId, listIdx, payload } = action;
+
   const needList = state.boards
-    .find((b) => b.id === +action.boardId).cells[action.listIdx].elements;
+    .find((b) => b.id === +boardId).cells[listIdx].elements;
 
   const allCells = state.boards
-    .find((b) => b.id === +action.boardId).cells;
+    .find((b) => b.id === +boardId).cells;
 
   const newList = [
     ...needList,
-    action.payload
+    payload
   ];
 
   const needCells = state.boards
-    .find((b) => b.id === +action.boardId)
-    .cells[action.listIdx];
+    .find((b) => b.id === +boardId)
+    .cells[listIdx];
 
   const newCells = {
     ...needCells,
@@ -74,13 +75,13 @@ const addTask = (state, action) => {
   };
 
   const allNewCells = [
-    ...allCells.slice(0, action.listIdx),
+    ...allCells.slice(0, listIdx),
     newCells,
-    ...allCells.slice(action.listIdx + 1)
+    ...allCells.slice(listIdx + 1)
   ];
 
   const needBoard = state.boards
-    .find((b) => b.id === +action.boardId);
+    .find((b) => b.id === +boardId);
 
   const newBoards = {
     ...needBoard,
@@ -90,9 +91,9 @@ const addTask = (state, action) => {
   return {
     ...state,
     boards: [
-      ...state.boards.slice(0, action.boardId),
+      ...state.boards.slice(0, boardId),
       newBoards,
-      ...state.boards.slice(action.boardId + 1)
+      ...state.boards.slice(boardId + 1)
     ]
   }
 }
@@ -157,25 +158,16 @@ const dragTask = (state, action) => {
       ...removingCell.elements.slice(action.rmTask + 1)
     ]
   } else if (action.rmList === action.addList && action.rmTask > action.addTask) {
-    console.log(removingCell.elements, action.rmTask);
-
     newRmTasks = [
       ...removingCell.elements.slice(0, action.rmTask + 1),
       ...removingCell.elements.slice(action.rmTask + 2)
     ]
-    console.log(newRmTasks)
 
   } else if (action.rmTask === 0) {
-    console.log(2)
-
     newRmTasks = [...removingCell.elements.slice(action.rmTask + 1)];
   } else if (action.rmTask === removingCell.elements.length - 1) {
-    console.log(3)
-
     newRmTasks = [...removingCell.elements.slice(0, action.rmTask)];
   } else {
-    console.log(4)
-
     newRmTasks = [
       ...removingCell.elements.slice(0, action.rmTask),
       ...removingCell.elements.slice(action.rmTask + 1)
@@ -211,18 +203,17 @@ const dragTask = (state, action) => {
 }
 
 const reducer = (state = initialState, action) => {
-  console.log(action.type, action.payload)
 
   switch (action.type) {
 
     case 'CREATE_BOARD':
-      return updateBoards(state, action);
+      return createBoard(state, action);
 
     case 'CREATE_LIST':
-      return updateListTitle(state, action);
+      return createList(state, action);
 
-    case 'ADD_TASK':
-      return addTask(state, action);
+    case 'CREATE_TASK':
+      return createTask(state, action);
 
     case 'DRAG_TASK':
       return dragTask(state, action);

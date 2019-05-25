@@ -1,5 +1,5 @@
 import React from 'react';
-import TaskItem from '../task-item';
+import TaskItem from '../../containers/task-item';
 
 const TaskRow = (props) => {
   const renderTasks = props.elements.map((task, idx) => {

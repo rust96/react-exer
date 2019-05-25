@@ -1,5 +1,5 @@
 import React from 'react';
-import BoardItem from '../board-item';
+import BoardItem from '../../containers/board-item';
 
 import './boards-row.css'
 

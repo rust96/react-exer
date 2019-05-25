@@ -16,7 +16,7 @@ class TaskCreator extends Component {
   }
 
   createTask = (taskName, boardId, listIdx) => {
-    this.props.addTask(taskName, boardId, listIdx);
+    this.props.createTask(taskName, boardId, listIdx);
     this.setState({ taskName: '' });
   }
 
