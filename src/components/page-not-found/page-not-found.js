@@ -2,7 +2,9 @@ import React from 'react';
 
 const PageNotFound = () => {
   return (
-    <h1>Этот адрес не найден, дружок, видимо, такая доска еще не создана</h1>
+    <div className="page_404">
+      <h1 className="title_not-found">404</h1>
+    </div>
   )
 }
 

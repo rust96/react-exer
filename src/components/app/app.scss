@@ -139,3 +139,20 @@ body, * {
 .board__item {
   margin-bottom: 20px;
 }
+
+.title_not-found {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 200px;
+  width: 390px;
+  
+  margin: auto;
+
+  color: white;
+  font-size: 190px;
+  font-weight: bold;
+}
