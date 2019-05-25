@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MainPage from '../main-page';
-import News from '../news';
+import BoardPage from '../board-page';
 import PageNotFound from '../page-not-found';
 
 const App = () => {
@@ -15,14 +15,14 @@ const App = () => {
       />
 
       <Route
-       path="/news/"
-       component={News}
+       path="/boards/"
+       component={BoardPage}
        exact
       />
 
       <Route
-       path="/news/:id"
-       component={News}
+       path="/boards/:id"
+       component={BoardPage}
       />
 
       <Route

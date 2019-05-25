@@ -104,10 +104,10 @@ class ListRow extends Component {
       }
 
       return tasks.map((task, idx) => {
-        if (this.state.margin === idx && this.state.marginMode === true && listIdx === this.state.editListIdx && !this.state.lastTask) {
+        if (this.state.margin === idx && this.state.marginMode === true && listIdx === this.state.addList && !this.state.lastTask) {
             marginT = this.state.marginHeight;
             marginB = 8;
-        } else if (this.state.lastTask && listIdx === this.state.editListIdx && idx === tasks.length - 1 && this.state.marginMode) {
+        } else if (this.state.lastTask && listIdx === this.state.addList && idx === tasks.length - 1 && this.state.marginMode) {
           marginT = 0;
           marginB = this.state.marginHeight;
         } else if (!this.state.marginMode) {

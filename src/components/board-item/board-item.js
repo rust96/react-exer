@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './board-item.scss';
 
-const newsPath = '/news/';
+const newsPath = '/boards/';
 
 const BoardItem = ({ title, id }) => {
   const remotePath = `${newsPath}${id}`;

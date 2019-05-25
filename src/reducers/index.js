@@ -1,22 +1,6 @@
 import { loadState } from '../localStorage';
 
-export const persistedState = loadState();
-console.log(persistedState)
-
-const emptyState = {
-  boards: [],
-  loading: false,
-  isLogin: false,
-  error: false
-}
-
-let initialState;
-
-if (!persistedState) {
-  initialState = emptyState;
-} else {
-  initialState = persistedState;
-}
+const initialState = loadState();
 
 const updateBoards = (state, action) => {
   const newBoard = {
@@ -178,11 +162,15 @@ const dragTask = (state, action) => {
     boards: newBoards
   }
 
-
   const removingCell = newState.boards[action.boardId].cells[action.rmList];
 
   let newRmTasks = [];
-  if (action.rmTask === 0) {
+  if (action.rmList === action.addList) {
+    newRmTasks = [
+      ...removingCell.elements.slice(0, action.rmTask + 1),
+      ...removingCell.elements.slice(action.rmTask + 2)
+    ]
+  } else if (action.rmTask === 0) {
     newRmTasks = [...removingCell.elements.slice(action.rmTask + 1)];
   } else if (action.rmTask === removingCell.elements.length - 1) {
     newRmTasks = [...removingCell.elements.slice(0, action.rmTask)];
@@ -214,7 +202,6 @@ const dragTask = (state, action) => {
     newRmBoard,
     ...newState.boards.slice(action.boardId + 1)
   ]
-  console.log(newRmBoard)
 
   return {
     ...state,

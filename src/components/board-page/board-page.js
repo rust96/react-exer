@@ -6,7 +6,7 @@ import CellCreator from '../cell-creator';
 import ListRow from '../list-row';
 import { addListTitle, addTask, dragTask } from '../../actions';
 
-class News extends Component {
+class BoardPage extends Component {
 
   addListTitle = (title, boardId) => {
     this.props.addListTitle(title, boardId)
@@ -66,4 +66,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(News);
+export default connect(mapStateToProps, mapDispatchToProps)(BoardPage);
