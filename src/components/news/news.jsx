@@ -4,7 +4,7 @@ import PageNotFound from '../page-not-found';
 import Header from '../header';
 import CellCreator from '../cell-creator';
 import ListRow from '../list-row';
-import { addListTitle, addTask } from '../../actions';
+import { addListTitle, addTask, dragTask } from '../../actions';
 
 class News extends Component {
 
@@ -31,6 +31,8 @@ class News extends Component {
           <ListRow
             board={currentBoard}
             addTask={this.props.addTask}
+            dragTask={this.props.dragTask}
+            boardId={id}
           />
 
           <CellCreator
@@ -57,6 +59,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     addTask: (task, boardId, listIdx) => {
       dispatch(addTask(task, boardId, listIdx))
+    },
+    dragTask: (rmList, rmTask, addList, addTask, boardId) => {
+      dispatch(dragTask(rmList, rmTask, addList, addTask, boardId))
     }
   }
 }

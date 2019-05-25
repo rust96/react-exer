@@ -13,18 +13,23 @@ export const addListTitle = (title, boardId) => {
   }
 }
 
-export const addListName = (name) => {
-  return {
-    type: 'ADD_LIST_NAME',
-    payload: name
-  }
-}
-
 export const addTask = (task, boardId, listIdx) => {
   return {
     type: 'ADD_TASK',
     payload: task,
     boardId,
     listIdx
+  }
+}
+
+export const dragTask = (rmList, rmTask, addList, addTask, boardId) => {
+  console.log(rmList)
+  return {
+    type: 'DRAG_TASK',
+    rmList,
+    rmTask,
+    addList,
+    addTask,
+    boardId
   }
 }
