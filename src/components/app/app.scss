@@ -1,14 +1,32 @@
+@import-normalize;
+
 body, * {
   font-family: 'Montserrat';
   font-size: 13px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('../../view/img/forest.jpg');
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+input {
+  width: 100%;
 }
 
 .main-page__title {
   margin-top: 20px;
 
   text-align: center;
-  font-size: 20px;
-  color: #DFE3E6;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
 }
 
 .list-block {
@@ -59,7 +77,7 @@ body, * {
 
     padding: 0;
 
-    background-image: url('/img/close.svg');
+    background-image: url('../../view/img/close.svg');
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -95,7 +113,7 @@ body, * {
     width: 15px;
     height: 15px;
 
-    background-image: url('/img/plus.svg');
+    background-image: url('../../view/img/plus.svg');
   }
 }
 .button_green {
@@ -149,10 +167,21 @@ body, * {
 
   height: 200px;
   width: 390px;
-  
+
   margin: auto;
 
   color: white;
   font-size: 190px;
   font-weight: bold;
+}
+
+.task__item {
+  margin-top: 0;
+}
+.board-creator__subtitle {
+  padding-bottom: 20px;
+  
+  color: white;
+  font-size: 20px;
+  text-align: center;
 }

@@ -28,7 +28,7 @@ class BoardCreator extends Component {
     if (boardOpen) {
       return (
         <div className="board-creator">
-          <p className="board-creator__create">Создаем доску...</p>
+          <p className="board-creator__subtitle">Создаем доску...</p>
 
           <input type="text" className="board-creator__input"
             value={boardName}

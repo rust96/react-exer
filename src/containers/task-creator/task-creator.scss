@@ -6,44 +6,16 @@ p {
   margin-left: 20px;
 }
 
-body {
-  background-image: url('/img/forest.jpg');
-  background-size: 100vw 100vh;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-.add-list__btn {
-   display: block;
-   position: relative;
-
-   min-height: 43px;
-
-   padding-left: 22px;
-   padding-top: 12px;
-   padding-bottom: 12px;
-
-   color: #6B808C;
-   font-size: 13px;
-   &::before {
-     content: "";
-
-     position: absolute;
-     top: 14px;
-     left: 0;
-
-     width: 15px;
-     height: 15px;
-
-     background-image: url('/img/vector.svg');
-   }
-}
 .input-creator {
   width: 100%;
   margin-top: 8px;
   margin-bottom: 8px;
-  padding: 8px 8px;
+  padding: 8px 0;
   padding-bottom: 27px;
 
+  border-radius: 3px;
+  border: .1px solid black;
+
+  text-indent: 8px;
   font-size: 13px;
 }

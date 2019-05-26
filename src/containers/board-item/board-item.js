@@ -11,7 +11,7 @@ const BoardItem = ({ title, id }) => {
       <Link className="board__link" to={remotePath}>
         <div className="board__wrapper">
           <div className="board__inner">
-            <p>{ title }</p>
+            <p className="board__title">{ title }</p>
           </div>
         </div>
       </Link>

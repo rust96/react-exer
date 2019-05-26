@@ -9,7 +9,7 @@
   list-style-type: none;
 
   border-radius: 5px;
-  background-color: #DFE3E6;
+  background-color: transparent;
   &:hover {
     transform: scale(1.01);
     .board__link {
@@ -39,4 +39,10 @@
   height: 100%;
 
   padding: 8px 12px;
+  border: 1px solid white;
+}
+.board__title {
+  color: white;
+  line-height: 1.6;
+  font-size: 16px;
 }

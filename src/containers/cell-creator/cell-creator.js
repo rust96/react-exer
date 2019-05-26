@@ -30,22 +30,25 @@ class CellCreator extends Component {
       return (
         <div className="list-block cell-creator">
           <div className="list-block__inner">
+          <div className="task-creator">
             <input type="text"
-              className="input-task task"
+              className="input-task input-creator"
               placeholder="Введите название колонки"
               value={cellName}
               onChange={this.onCellChange}
             />
 
-          <div className="flex">
-            <button
-              className="button button_green"
-              onClick={() => this.addNewList(cellName, currentBoardId)}>
-              Добавить колонку
-            </button>
+            <div className="flex">
+              <button
+                className="button button_green"
+                onClick={() => this.addNewList(cellName, currentBoardId)}>
+                Добавить колонку
+              </button>
 
-            <button className="button button_close" onClick={this.toggleAddMode}></button>
+              <button className="button button_close" onClick={this.toggleAddMode}></button>
+            </div>
           </div>
+
         </div>
       </div>
       );
