@@ -8,7 +8,7 @@ import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <Router basename="/react-exer">
       <App />
     </Router>
   </Provider>, document.getElementById('root'));
