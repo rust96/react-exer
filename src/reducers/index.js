@@ -54,48 +54,25 @@ const createList = (state, action) => {
 const createTask = (state, action) => {
   const { boardId, listIdx, payload } = action;
 
-  const needList = state.boards
-    .find((b) => b.id === +boardId).cells[listIdx].elements;
+  const _newBoards = [...state.boards.map((board) => {
+      if (board.id === boardId) {
+          const newCells = board.cells.map((cell, id) => {
+              if (id === listIdx) {
+                  const newElement = payload;
 
-  const allCells = state.boards
-    .find((b) => b.id === +boardId).cells;
+                  return {...cell, elements: [...cell.elements, newElement]};
+              }
 
-  const newList = [
-    ...needList,
-    payload
-  ];
+              return cell;
+          });
 
-  const needCells = state.boards
-    .find((b) => b.id === +boardId)
-    .cells[listIdx];
+          return {...board, cells: newCells};
+      }
 
-  const newCells = {
-    ...needCells,
-    elements: newList
-  };
+      return board;
+  })];
 
-  const allNewCells = [
-    ...allCells.slice(0, listIdx),
-    newCells,
-    ...allCells.slice(listIdx + 1)
-  ];
-
-  const needBoard = state.boards
-    .find((b) => b.id === +boardId);
-
-  const newBoards = {
-    ...needBoard,
-    cells: allNewCells
-  }
-
-  return {
-    ...state,
-    boards: [
-      ...state.boards.slice(0, boardId),
-      newBoards,
-      ...state.boards.slice(boardId + 1)
-    ]
-  }
+  return {...state, boards: _newBoards};
 }
 
 const dragTask = (state, action) => {
