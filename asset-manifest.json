@@ -1,14 +1,14 @@
 {
-  "main.css": "/react-exer/static/css/main.955f85a8.chunk.css",
-  "main.js": "/react-exer/static/js/main.6e5d9a78.chunk.js",
-  "main.js.map": "/react-exer/static/js/main.6e5d9a78.chunk.js.map",
+  "main.css": "/react-exer/static/css/main.60e3bace.chunk.css",
+  "main.js": "/react-exer/static/js/main.88a7c126.chunk.js",
+  "main.js.map": "/react-exer/static/js/main.88a7c126.chunk.js.map",
   "runtime~main.js": "/react-exer/static/js/runtime~main.21a97f7f.js",
   "runtime~main.js.map": "/react-exer/static/js/runtime~main.21a97f7f.js.map",
   "static/js/2.fb4b35a1.chunk.js": "/react-exer/static/js/2.fb4b35a1.chunk.js",
   "static/js/2.fb4b35a1.chunk.js.map": "/react-exer/static/js/2.fb4b35a1.chunk.js.map",
   "index.html": "/react-exer/index.html",
-  "precache-manifest.a30b7771f0eb615636681f6a30a419e3.js": "/react-exer/precache-manifest.a30b7771f0eb615636681f6a30a419e3.js",
+  "precache-manifest.1c8c0d78aba48e422feec1c35f0a7f40.js": "/react-exer/precache-manifest.1c8c0d78aba48e422feec1c35f0a7f40.js",
   "service-worker.js": "/react-exer/service-worker.js",
-  "static/css/main.955f85a8.chunk.css.map": "/react-exer/static/css/main.955f85a8.chunk.css.map",
-  "static/media/app.scss": "/react-exer/static/media/plus.b4e7124a.svg"
+  "static/css/main.60e3bace.chunk.css.map": "/react-exer/static/css/main.60e3bace.chunk.css.map",
+  "static/media/app.scss": "/react-exer/static/media/plus.6cb6e5fc.svg"
 }
